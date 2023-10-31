@@ -8,6 +8,9 @@ importers:
 
   .:
     dependencies:
+      '@amap/amap-jsapi-loader':
+        specifier: ^1.0.1
+        version: registry.npmmirror.com/@amap/amap-jsapi-loader@1.0.1
       '@ant-design/icons-vue':
         specifier: ^6.1.0
         version: registry.npmmirror.com/@ant-design/icons-vue@6.1.0(vue@3.3.7)
@@ -47,6 +50,12 @@ importers:
       echarts:
         specifier: ^5.4.3
         version: registry.npmmirror.com/echarts@5.4.3
+      file-saver:
+        specifier: ^2.0.5
+        version: registry.npmmirror.com/file-saver@2.0.5
+      highlight.js:
+        specifier: ^11.9.0
+        version: registry.npmmirror.com/highlight.js@11.9.0
       lodash-es:
         specifier: ^4.17.21
         version: registry.npmmirror.com/lodash-es@4.17.21
@@ -449,6 +458,12 @@ packages:
     version: 1.2.6
     engines: {node: '>=0.10.0'}
     dev: true
+
+  registry.npmmirror.com/@amap/amap-jsapi-loader@1.0.1:
+    resolution: {integrity: sha512-nPyLKt7Ow/ThHLkSvn2etQlUzqxmTVgK7bIgwdBRTg2HK5668oN7xVxkaiRe3YZEzGzfV2XgH5Jmu2T73ljejw==, registry: https://registry.npm.taobao.org/, tarball: https://registry.npmmirror.com/@amap/amap-jsapi-loader/-/amap-jsapi-loader-1.0.1.tgz}
+    name: '@amap/amap-jsapi-loader'
+    version: 1.0.1
+    dev: false
 
   registry.npmmirror.com/@ampproject/remapping@2.2.1:
     resolution: {integrity: sha512-lFMjJTrFL3j7L9yBxwYfCq2k6qqwHyzuUl/XBnif78PWTJYyL/dfowQHWE3sp6U6ZzqWiiIZnpTMO96zhkjwtg==, registry: https://registry.npm.taobao.org/, tarball: https://registry.npmmirror.com/@ampproject/remapping/-/remapping-2.2.1.tgz}
@@ -6374,6 +6389,12 @@ packages:
       flat-cache: registry.npmmirror.com/flat-cache@3.1.1
     dev: true
 
+  registry.npmmirror.com/file-saver@2.0.5:
+    resolution: {integrity: sha512-P9bmyZ3h/PRG+Nzga+rbdI4OEpNDzAVyy74uVO9ATgzLK6VtAsYybF/+TOCvrc0MO793d6+42lLyZTw7/ArVzA==, registry: https://registry.npm.taobao.org/, tarball: https://registry.npmmirror.com/file-saver/-/file-saver-2.0.5.tgz}
+    name: file-saver
+    version: 2.0.5
+    dev: false
+
   registry.npmmirror.com/filelist@1.0.4:
     resolution: {integrity: sha512-w1cEuf3S+DrLCQL7ET6kz+gmlJdbq9J7yXCSjK/OZCPA+qEN1WyF4ZAf0YYJa4/shHJra2t/d/r8SV4Ji+x+8Q==, registry: https://registry.npm.taobao.org/, tarball: https://registry.npmmirror.com/filelist/-/filelist-1.0.4.tgz}
     name: filelist
@@ -7039,6 +7060,13 @@ packages:
     name: hexoid
     version: 1.0.0
     engines: {node: '>=8'}
+    dev: false
+
+  registry.npmmirror.com/highlight.js@11.9.0:
+    resolution: {integrity: sha512-fJ7cW7fQGCYAkgv4CPfwFHrfd/cLS4Hau96JuJ+ZTOWhjnhoeN1ub1tFmALm/+lW5z4WCAuAV9bm05AP0mS6Gw==, registry: https://registry.npm.taobao.org/, tarball: https://registry.npmmirror.com/highlight.js/-/highlight.js-11.9.0.tgz}
+    name: highlight.js
+    version: 11.9.0
+    engines: {node: '>=12.0.0'}
     dev: false
 
   registry.npmmirror.com/hookable@5.5.3:

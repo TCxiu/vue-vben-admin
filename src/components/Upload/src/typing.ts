@@ -1,5 +1,5 @@
 import { BasicColumn } from '../../Table';
-import { UploadApiResult } from '/@/api/sys/model/uploadModel';
+import { UploadResult } from '/@/api/common/model/uploadModel';
 
 export enum UploadResultStatus {
   SUCCESS = 'success',
@@ -15,7 +15,7 @@ export interface FileItem {
   percent: number;
   file: File;
   status?: UploadResultStatus;
-  responseData?: UploadApiResult;
+  responseData?: UploadResult;
   uuid: string;
 }
 

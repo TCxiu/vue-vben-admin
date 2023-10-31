@@ -1,14 +1,20 @@
+import { useI18n } from '/@/hooks/web/useI18n';
+
 interface TreeHelperConfig {
   id: string;
+  label: string;
   children: string;
-  pid: string;
+  parentId: string;
+  orderNo: string;
 }
 
 // 默认配置
 const DEFAULT_CONFIG: TreeHelperConfig = {
   id: 'id',
+  label: 'label',
   children: 'children',
-  pid: 'pid',
+  parentId: 'parentId',
+  orderNo: 'orderNo',
 };
 
 // 获取配置。  Object.assign 从一个或多个源对象复制到目标对象
@@ -17,19 +23,62 @@ const getConfig = (config: Partial<TreeHelperConfig>) => Object.assign({}, DEFAU
 // tree from list
 // 列表中的树
 export function listToTree<T = any>(list: any[], config: Partial<TreeHelperConfig> = {}): T[] {
+  const { t } = useI18n();
   const conf = getConfig(config) as TreeHelperConfig;
   const nodeMap = new Map();
   const result: T[] = [];
-  const { id, children, pid } = conf;
+  const { id, label, children, parentId, orderNo } = conf;
+
+  for (const node of list) {
+    node[children] = node[children] || [];
+    node[label] = t(node[label]);
+    nodeMap.set(node[id], node);
+  }
+  for (const node of list) {
+    const parent = nodeMap.get(node[parentId]);
+    if (parent) {
+      parent[children].push(node);
+      parent[children].sort((a, b) => {
+        return (b[orderNo] || 0) - (a[orderNo] || 0);
+      });
+    } else {
+      result.push(node);
+    }
+  }
+  // 进行排序
+  result.sort((a, b) => {
+    return (b[orderNo] || 0) - (a[orderNo] || 0);
+  });
+  return result;
+}
+
+// 路由列表转换为树
+export function routeListToTree<T = any>(list: any[], config: Partial<TreeHelperConfig> = {}): T[] {
+  const conf = getConfig(config) as TreeHelperConfig;
+  const nodeMap = new Map();
+  const result: T[] = [];
+  const { id, children, parentId } = conf;
 
   for (const node of list) {
     node[children] = node[children] || [];
     nodeMap.set(node[id], node);
   }
+
   for (const node of list) {
-    const parent = nodeMap.get(node[pid]);
-    (parent ? parent[children] : result).push(node);
+    const parent = nodeMap.get(node[parentId]);
+    if (parent) {
+      parent[children].push(node);
+      parent[children].sort((a, b) => {
+        return (b.meta?.orderNo || 0) - (a.meta?.orderNo || 0);
+      });
+    } else {
+      result.push(node);
+    }
   }
+  // 对菜单进行排序
+  result.sort((a, b) => {
+    return (b.meta?.orderNo || 0) - (a.meta?.orderNo || 0);
+  });
   return result;
 }
 

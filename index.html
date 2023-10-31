@@ -12,6 +12,21 @@
     <link rel="icon" href="/favicon.ico" />
   </head>
   <body>
+    <script>
+      (() => {
+        var htmlRoot = document.getElementById('htmlRoot');
+        var theme = window.localStorage.getItem('__APP__DARK__MODE__');
+        if (htmlRoot && theme) {
+          htmlRoot.setAttribute('data-theme', theme);
+          theme = htmlRoot = null;
+        }
+      })();
+
+      window._AMapSecurityConfig = {
+        securityJsCode: '96ce5612a454dd993c87998f08b18c3c',
+      };
+    </script>
+
     <div id="app">
       <style>
         html[data-theme='dark'] .app-loading {

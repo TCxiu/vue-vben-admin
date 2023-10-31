@@ -1,0 +1,42 @@
+{
+  "action": {
+    "title": "操作",
+    "add": "添加角色",
+    "edit": "修改角色",
+    "del": "删除角色"
+  },
+  "search": {},
+  "table": {
+    "title": "角色列表",
+    "columns": {
+      "roleId": "角色ID",
+      "roleCodeDesc": "角色名",
+      "roleCode": "角色值",
+      "dataScopeType": "数据权限范围",
+      "status": "状态",
+      "siteName": "归属机构",
+      "createTime": "创建时间"
+    }
+  },
+  "form": {
+    "roleId": "角色ID",
+    "roleCodeDesc": "角色名",
+    "roleCode": "角色值",
+    "dataScopeType": "数据权限范围",
+    "siteId": "归属机构",
+    "status": "状态"
+  },
+  "dir": {
+    "status": {
+      "enable": "正常",
+      "disable": "停用"
+    },
+    "dataScopeType": {
+      "0": "全部",
+      "1": "本机构及子机构",
+      "2": "仅本机构",
+      "3": "仅自己",
+      "4": "自定义"
+    }
+  }
+}

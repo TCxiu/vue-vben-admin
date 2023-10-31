@@ -180,18 +180,6 @@
       }
     }
 
-    &-sign-in-way {
-      .anticon {
-        color: #888;
-        font-size: 22px;
-        cursor: pointer;
-
-        &:hover {
-          color: @primary-color;
-        }
-      }
-    }
-
     input:not([type='checkbox']) {
       min-width: 360px;
       /* stylelint-disable-next-line media-query-no-invalid */

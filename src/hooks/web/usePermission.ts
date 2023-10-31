@@ -115,5 +115,19 @@ export function usePermission() {
     resume();
   }
 
-  return { changeRole, hasPermission, togglePermissionMode, refreshMenu };
+  /**
+   * refresh routes
+   */
+  async function refreshRoutes() {
+    const tabStore = useMultipleTabStore();
+    tabStore.clearCacheTabs();
+    resetRouter();
+    const routes = await permissionStore.buildRoutesAction();
+    routes.forEach((route) => {
+      router.addRoute(route as unknown as RouteRecordRaw);
+    });
+    permissionStore.setLastBuildMenuTime();
+  }
+
+  return { changeRole, hasPermission, togglePermissionMode, refreshMenu, refreshRoutes };
 }

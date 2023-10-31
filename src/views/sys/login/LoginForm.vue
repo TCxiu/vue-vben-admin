@@ -25,6 +25,25 @@
       />
     </FormItem>
 
+    <FormItem name="codeKey" v-show="false">
+      <Input size="large" allowClear v-model:value="formData.codeKey" />
+    </FormItem>
+
+    <FormItem name="code" class="enter-x">
+      <Input
+        size="large"
+        allowClear
+        v-model:value="formData.code"
+        :placeholder="t('sys.login.captchaPlaceholder')"
+      >
+        <template #suffix>
+          <div @click="freshImageCode()" style="margin-top: 2px">
+            <img width="70" height="30" :src="captchaImage" />
+          </div>
+        </template>
+      </Input>
+    </FormItem>
+
     <ARow class="enter-x">
       <ACol :span="12">
         <FormItem>
@@ -69,33 +88,18 @@
         </Button>
       </ACol>
     </ARow>
-
-    <Divider class="enter-x">{{ t('sys.login.otherSignIn') }}</Divider>
-
-    <div class="flex justify-evenly enter-x" :class="`${prefixCls}-sign-in-way`">
-      <GithubFilled />
-      <WechatFilled />
-      <AlipayCircleFilled />
-      <GoogleCircleFilled />
-      <TwitterCircleFilled />
-    </div>
   </Form>
 </template>
 <script lang="ts" setup>
-  import { reactive, ref, unref, computed } from 'vue';
+  import { reactive, ref, unref, computed, onMounted } from 'vue';
 
-  import { Checkbox, Form, Input, Row, Col, Button, Divider } from 'ant-design-vue';
-  import {
-    GithubFilled,
-    WechatFilled,
-    AlipayCircleFilled,
-    GoogleCircleFilled,
-    TwitterCircleFilled,
-  } from '@ant-design/icons-vue';
+  import { Checkbox, Form, Input, Row, Col, Button } from 'ant-design-vue';
   import LoginFormTitle from './LoginFormTitle.vue';
 
   import { useI18n } from '/@/hooks/web/useI18n';
   import { useMessage } from '/@/hooks/web/useMessage';
+
+  import { getCaptcha } from '/@/api/constant/system';
 
   import { useUserStore } from '/@/store/modules/user';
   import { LoginStateEnum, useLoginState, useFormRules, useFormValid } from './useLogin';
@@ -117,11 +121,20 @@
   const formRef = ref();
   const loading = ref(false);
   const rememberMe = ref(false);
+  const captchaImage = ref();
 
   const formData = reactive({
     account: 'vben',
     password: '123456',
+    codeKey: '8846b618cbac4da19f774987c46bc10f',
+    code: '9',
   });
+
+  const freshImageCode = async () => {
+    const { base64Image, key } = await getCaptcha();
+    captchaImage.value = base64Image;
+    formData.codeKey = key;
+  };
 
   const { validForm } = useFormValid(formRef);
 
@@ -135,8 +148,10 @@
     try {
       loading.value = true;
       const userInfo = await userStore.login({
+        account: data.account,
         password: data.password,
-        username: data.account,
+        codeKey: data.codeKey,
+        code: data.code,
         mode: 'none', //不要默认的错误提示
       });
       if (userInfo) {
@@ -156,4 +171,8 @@
       loading.value = false;
     }
   }
+
+  onMounted(() => {
+    freshImageCode();
+  });
 </script>

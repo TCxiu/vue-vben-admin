@@ -1,0 +1,38 @@
+{
+  "action": {
+    "title": "操作",
+    "add": "添加机构",
+    "edit": "修改机构",
+    "del": "删除机构"
+  },
+  "search": {},
+  "table": {
+    "title": "机构列表",
+    "columns": {
+      "siteId": "机构ID",
+      "name": "机构名称",
+      "siteType": "机构类型",
+      "leader": "负责人",
+      "leaderPhone": "负责人手机号",
+      "region": "所在区域",
+      "regionCode": "所在区域",
+      "address": "详细地址",
+      "siteLogo": "机构logo",
+      "createTime": "创建时间"
+    }
+  },
+  "form": {
+    "siteId": "机构ID",
+    "parentId": "上级机构",
+    "name": "机构名称",
+    "siteType": "机构类型",
+    "leader": "负责人",
+    "leaderPhone": "负责人手机号",
+    "region": "所在区域",
+    "regionCode": "所在区域",
+    "address": "详细地址",
+    "isPosition": "是否定位",
+    "siteLogo": "机构logo",
+    "lat": "地图选点"
+  }
+}

@@ -16,10 +16,10 @@ import { PermissionModeEnum } from '/@/enums/appEnum';
 import { asyncRoutes } from '/@/router/routes';
 import { ERROR_LOG_ROUTE, PAGE_NOT_FOUND_ROUTE } from '/@/router/routes/basic';
 
-import { filter } from '/@/utils/helper/treeHelper';
+import { routeListToTree, filter } from '/@/utils/helper/treeHelper';
 
-import { getMenuList } from '/@/api/sys/menu';
-import { getPermCode } from '/@/api/sys/user';
+import { getMenuRoutes } from '/@/api/system/menu';
+import { getPermCode } from '/@/api/system/user';
 
 import { useMessage } from '/@/hooks/web/useMessage';
 import { PageEnum } from '/@/enums/pageEnum';
@@ -222,7 +222,7 @@ export const usePermissionStore = defineStore({
           let routeList: AppRouteRecordRaw[] = [];
           try {
             await this.changePermissionCode();
-            routeList = (await getMenuList()) as AppRouteRecordRaw[];
+            routeList = routeListToTree(await getMenuRoutes()) as AppRouteRecordRaw[];
           } catch (error) {
             console.error(error);
           }

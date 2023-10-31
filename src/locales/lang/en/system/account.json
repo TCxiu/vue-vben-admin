@@ -1,0 +1,40 @@
+{
+  "action": {
+    "title": "操作",
+    "tree": "机构列表",
+    "add": "添加用户",
+    "edit": "修改用户",
+    "del": "删除用户",
+    "changePwd": "修改密码"
+  },
+  "search": {},
+  "table": {
+    "title": "账号列表",
+    "columns": {
+      "userId": "用户ID",
+      "account": "登录账号",
+      "nickName": "登录名称",
+      "phone": "手机号",
+      "siteName": "机构名称",
+      "status": "账户状态",
+      "createTime": "创建时间"
+    }
+  },
+  "form": {
+    "userId": "用户ID",
+    "account": "登录账号",
+    "nickName": "登录名称",
+    "password": "密码",
+    "phone": "手机号",
+    "roleId": "角色",
+    "siteId": "机构名称",
+    "status": "账户状态",
+    "createTime": "创建时间"
+  },
+  "dir": {
+    "status": {
+      "enable": "正常",
+      "disable": "停用"
+    }
+  }
+}

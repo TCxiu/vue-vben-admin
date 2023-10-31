@@ -1,0 +1,70 @@
+{
+  "action": {
+    "title": "操作",
+    "add": "添加菜单",
+    "edit": "修改菜单",
+    "del": "删除菜单"
+  },
+  "search": {
+    "menuOs": "所属终端",
+    "menuType": "菜单类型"
+  },
+  "table": {
+    "title": "菜单列表",
+    "columns": {
+      "menuId": "菜单ID",
+      "title": "菜单标题",
+      "path": "URL路径",
+      "redirect": "重定向地址",
+      "component": "组件路径",
+      "menuType": "菜单类型",
+      "menuOs": "所属终端",
+      "webIcon": "web图标",
+      "wapIcon": "wap图标",
+      "permission": "权限表达式",
+      "affix": "是否固定",
+      "hideChildrenInMenu": "隐藏子菜单",
+      "hideBreadcrumb": "隐藏面包屑",
+      "currentActiveMenu": "当前激活菜单",
+      "ignoreKeepAlive": "是否忽略KeepAlive缓存",
+      "frameSrc": "内联地址",
+      "hideMenu": "菜单显隐",
+      "hideTab": "不在标签页显示",
+      "orderNo": "排序",
+      "createTime": "创建时间"
+    }
+  },
+  "form": {
+    "menuType": "菜单类型",
+    "menuOs": "所属终端",
+    "title": "菜单标题",
+    "parentId": "上级菜单",
+    "path": "URL路径",
+    "component": "组件路径",
+    "redirect": "重定向地址",
+    "frameSrc": "外链地址",
+    "webIcon": "web图标",
+    "wapIcon": "上传图标",
+    "permission": "权限标识",
+    "orderNo": "排序",
+    "hideMenu": "菜单显隐",
+    "ignoreKeepAlive": "是否缓存",
+    "affix": "是否固定",
+    "hideTab": "不在标签页显示"
+  },
+  "dir": {
+    "menuType": {
+      "menu": "菜单",
+      "button": "按钮"
+    },
+    "menuOs": {
+      "pc": "电脑",
+      "wchat": "公众号",
+      "android": "安卓"
+    },
+    "hide": {
+      "show": "显示",
+      "hide": "隐藏"
+    }
+  }
+}

@@ -6,8 +6,10 @@ import { RoleEnum } from '/@/enums/roleEnum';
 import { PageEnum } from '/@/enums/pageEnum';
 import { ROLES_KEY, TOKEN_KEY, USER_INFO_KEY } from '/@/enums/cacheEnum';
 import { getAuthCache, setAuthCache } from '/@/utils/auth';
-import { GetUserInfoModel, LoginParams } from '/@/api/sys/model/userModel';
-import { doLogout, getUserInfo, loginApi } from '/@/api/sys/user';
+import { GetUserInfoModel } from '/@/api/sys/model/userModel';
+import { LoginOption } from '/@/api/constant/model/systemModel';
+import { doLogout, getUserLoginInfo } from '/@/api/system/user';
+import { loginApi } from '/@/api/constant/system';
 import { useI18n } from '/@/hooks/web/useI18n';
 import { useMessage } from '/@/hooks/web/useMessage';
 import { router } from '/@/router';
@@ -83,7 +85,7 @@ export const useUserStore = defineStore({
      * @description: login
      */
     async login(
-      params: LoginParams & {
+      params: LoginOption & {
         goHome?: boolean;
         mode?: ErrorMessageMode;
       },
@@ -92,7 +94,6 @@ export const useUserStore = defineStore({
         const { goHome = true, mode, ...loginParams } = params;
         const data = await loginApi(loginParams, mode);
         const { token } = data;
-
         // save token
         this.setToken(token);
         return this.afterLoginAction(goHome);
@@ -104,6 +105,7 @@ export const useUserStore = defineStore({
       if (!this.getToken) return null;
       // get user info
       const userInfo = await this.getUserInfoAction();
+      console.log(userInfo);
 
       const sessionTimeout = this.sessionTimeout;
       if (sessionTimeout) {
@@ -124,7 +126,7 @@ export const useUserStore = defineStore({
     },
     async getUserInfoAction(): Promise<UserInfo | null> {
       if (!this.getToken) return null;
-      const userInfo = await getUserInfo();
+      const userInfo = await getUserLoginInfo();
       const { roles = [] } = userInfo;
       if (isArray(roles)) {
         const roleList = roles.map((item) => item.value) as RoleEnum[];
