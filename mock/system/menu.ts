@@ -218,6 +218,35 @@ const testRoute = [
   },
 ];
 
+// 关于路由
+const aboutRoute = [
+  {
+    id: '50',
+    parentId: '',
+    path: '/about',
+    name: 'About',
+    component: 'LAYOUT',
+    redirect: '/about/index',
+    meta: {
+      title: 'routes.dashboard.about',
+      icon: 'ant-design:link-outlined',
+      hideChildrenInMenu: true,
+    },
+  },
+  {
+    id: '51',
+    parentId: '50',
+    path: 'index',
+    name: 'AboutIndex',
+    component: '/sys/about/index.vue',
+    meta: {
+      title: 'routes.dashboard.about',
+      icon: 'ant-design:link-outlined',
+      hideMenu: true,
+    },
+  },
+];
+
 // 可视化菜单
 const dashboardMenu = [
   {
@@ -550,7 +579,13 @@ export default [
     url: '/basic-api/system/menu/routes',
     method: 'get',
     response: () => {
-      return resultSuccess([...dashboardRoute, ...systemRoute, ...generateRoute, ...testRoute]);
+      return resultSuccess([
+        ...dashboardRoute,
+        ...systemRoute,
+        ...generateRoute,
+        ...testRoute,
+        ...aboutRoute,
+      ]);
     },
   },
   {
