@@ -1,5 +1,5 @@
 import { defHttp } from '/@/utils/http/axios';
-import { UserLoginInfo } from './model/userModel';
+import type { UserInfo } from '/#/store';
 
 enum Api {
   GetUserLoginInfo = '/system/user/info/login',
@@ -13,7 +13,7 @@ enum Api {
  * @description: 获取用户登录信息
  */
 export function getUserLoginInfo() {
-  return defHttp.get<UserLoginInfo>({ url: Api.GetUserLoginInfo }, { errorMessageMode: 'none' });
+  return defHttp.get<UserInfo>({ url: Api.GetUserLoginInfo }, { errorMessageMode: 'none' });
 }
 
 /**

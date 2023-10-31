@@ -1,6 +1,6 @@
 <template>
   <div>
-    <BasicTable @register="registerTable" @fetch-success="handleTableLoad">
+    <BasicTable @register="registerTable">
       <template #toolbar>
         <a-button type="primary" @click="handleCreate"> 新增角色 </a-button>
       </template>
@@ -77,11 +77,6 @@
       fixed: 'right',
     },
   });
-
-  //表格数据获取完毕后
-  const handleTableLoad = () => {
-    console.log('表格加载完毕');
-  };
 
   //新增
   function handleCreate() {

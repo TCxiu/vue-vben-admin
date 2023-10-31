@@ -50,6 +50,8 @@ export interface UserInfo {
   siteType: number;
   // 数据权限
   dataScopeType: number;
+  // 角色ID
+  roleId: string | number;
   // 角色列表
   roles: RoleInfo[];
   desc?: string;
